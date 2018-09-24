@@ -1,0 +1,85 @@
+{
+  "name": "mfrn-boilerplate",
+  "description": "A boilerplate using the MongoDB-FeathersJS-ReactJS-NodeJS stack",
+  "version": "0.0.0",
+  "homepage": "",
+  "main": "src",
+  "keywords": [
+    "feathers"
+  ],
+  "author": {
+    "name": "24thsaint",
+    "email": "admin@blackout.biz.tm"
+  },
+  "contributors": [],
+  "bugs": {},
+  "directories": {
+    "lib": "src",
+    "test": "test/"
+  },
+  "engines": {
+    "node": "^10.0.0",
+    "npm": ">= 3.0.0"
+  },
+  "scripts": {
+    "test": "npm run eslint && npm run mocha",
+    "eslint": "eslint src/. test/. --config .eslintrc.json",
+    "start": "node src/",
+    "mocha": "mocha test/ --recursive --exit",
+    "build:webpack": "webpack",
+    "build:app": "babel src/ --out-dir app/ --copy-files",
+    "build:full": "npm run build:app && npm run build:webpack",
+    "build:full:dev": "babel src/ --out-dir app/ --copy-files --watch & webpack --watch"
+  },
+  "dependencies": {
+    "@babel/core": "^7.1.0",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/plugin-proposal-decorators": "^7.1.0",
+    "@babel/polyfill": "^7.0.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "@feathersjs/configuration": "^2.0.4",
+    "@feathersjs/errors": "^3.3.4",
+    "@feathersjs/express": "^1.2.7",
+    "@feathersjs/feathers": "^3.2.3",
+    "@feathersjs/socketio": "^3.2.6",
+    "@feathersjs/socketio-client": "^1.1.4",
+    "@material-ui/core": "^3.1.1",
+    "@material-ui/icons": "^3.0.1",
+    "babel-eslint": "^9.0.0",
+    "babel-loader": "^8.0.2",
+    "compression": "^1.7.3",
+    "cors": "^2.8.4",
+    "css-loader": "^1.0.0",
+    "feathers-mongodb": "^3.3.0",
+    "file-loader": "^2.0.0",
+    "helmet": "^3.13.0",
+    "mobx": "^5.1.2",
+    "mobx-react": "^5.2.8",
+    "mongodb": "^3.1.6",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+    "serve-favicon": "^2.5.0",
+    "socket.io-client": "^2.1.1",
+    "style-loader": "^0.23.0",
+    "typeface-roboto": "0.0.54",
+    "webpack": "^4.19.1",
+    "webpack-cli": "^3.1.1",
+    "winston": "^3.1.0"
+  },
+  "devDependencies": {
+    "cz-conventional-changelog": "^2.1.0",
+    "eslint": "^5.6.0",
+    "eslint-plugin-react": "^7.11.1",
+    "mocha": "^5.2.0",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
