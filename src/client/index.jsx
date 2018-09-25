@@ -11,14 +11,14 @@ import RootStore from './stores/RootStore';
 import Homepage from './homepage/Homepage';
 import AddEntriesContainer from './lottery/AddEntries.smart';
 import ShowEntries from './lottery/ShowEntries.smart';
-
+import './index.css';
 
 const rootStore = new RootStore(client);
 
 const Index = () => (
   <Provider store={rootStore}>
     <Router>
-      <Grid container justify="center">
+      <Grid container justify="center" id="rootContainer">
         <Route exact path='/' component={Homepage} />
         <Route path='/entries/add' component={AddEntriesContainer} />
         <Route path='/entries/show' component={ShowEntries} />

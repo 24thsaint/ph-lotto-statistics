@@ -13,14 +13,24 @@ class Homepage extends React.Component {
 
   render() {
     return (
-      <Grid container direction="column" class="container">
+      <Grid container direction="column" spacing={24}>
         <Grid item>
           <h2 className="center-text">Welcome, Rave.</h2>
         </Grid>
-        <Grid container item direction="row">
-          <Link to="/entries/add">
-            <Button variant="outlined" color="primary">Lottery</Button>
-          </Link>
+        <Grid item>
+          <Grid container item direction="row" justify="center" spacing={16}>
+            <Grid item>
+              <Link to="/entries/add">
+                <Button variant="outlined" color="primary">Add Entries</Button>
+              </Link>
+            </Grid>
+
+            <Grid item>
+              <Link to="/entries/show">
+                <Button variant="outlined" color="primary">Show Entries</Button>
+              </Link>
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
     );

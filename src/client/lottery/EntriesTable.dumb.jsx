@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { inject, observer } from 'mobx-react';
 import { Table, TableHead, TableRow, TableCell, TableBody, Grid } from '@material-ui/core';
 import LottoStore from '../stores/LottoStore';
+import './AddEntries.css';
 
 @inject('store') @observer
 class EntriesTable extends React.Component {
