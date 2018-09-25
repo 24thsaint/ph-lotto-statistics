@@ -1,8 +1,8 @@
-import FooStore from './FooStore';
+import LottoStore from './LottoStore';
 
 class RootStore {
   constructor(client) {
-    this.fooStore = new FooStore(this, client);
+    this.lottoStore = new LottoStore(this, client);
   }
 }
 
