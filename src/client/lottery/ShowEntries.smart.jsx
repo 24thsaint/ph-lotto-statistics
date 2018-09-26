@@ -1,8 +1,9 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
-import { Grid } from '@material-ui/core';
+import { Grid, Paper, Typography } from '@material-ui/core';
 import EntriesTable from '../../../app/client/lottery/EntriesTable.dumb';
-import { BarChart, CartesianGrid, YAxis, XAxis, Tooltip, Legend, Bar, ResponsiveContainer } from 'recharts';
+import { BarChart, YAxis, XAxis, Tooltip, Bar, ResponsiveContainer, Cell } from 'recharts';
+import './AddEntries.css';
 
 @inject('store') @observer
 class ShowEntries extends React.Component {
@@ -18,22 +19,39 @@ class ShowEntries extends React.Component {
 
   render() {
     let component = 'Loading...';
-
+    const selectedResult = this.lottoStore.selectedResult;
+    const selectedCombination = selectedResult.combination;
+    const normalizedCombination = `${selectedCombination.join('-')} | ${selectedResult.drawDate} | ₱${selectedResult.jackpot}`;
+    
     if (this.lottoStore.batchResult) {
       component = 
-        <Grid container item justify="center" direction="column">
+        <Grid container item justify="center" direction="column" spacing={24}>
+          <Grid container item justify="center">
+            <Typography variant="title">[{selectedCombination.length > 0 ? normalizedCombination : 'Select a result on the table to view highlighted stats'}]</Typography>
+          </Grid>
           <Grid item>
-            <ResponsiveContainer width="100%" height={400}>
-              <BarChart 
-                data={this.lottoStore.batchResult.getNormalizedStatistics()}
-                margin={{right: 20}}
-              >
-                <XAxis dataKey="name" interval={0} />
-                <YAxis />
-                <Tooltip />
-                <Bar dataKey="value" fill="#8884d8" />
-              </BarChart>
-            </ResponsiveContainer>
+            <Paper elevation={2} className="container">
+              <ResponsiveContainer width="100%" height={400}>
+                <BarChart 
+                  data={this.lottoStore.batchResult.getNormalizedStatistics()}
+                >
+                  <XAxis dataKey="name" interval={0} />
+                  <YAxis />
+                  <Tooltip />
+                  <Bar dataKey="value">
+                    {
+                      this.lottoStore.batchResult.getNormalizedStatistics().map((datum) => {
+                        if (selectedCombination.includes(datum.name)) {
+                          return <Cell fill="#ff69b4" key={datum.name} />;
+                        } else {
+                          return <Cell fill="#add8e6" key={datum.name} />;
+                        }
+                      })
+                    }
+                  </Bar>
+                </BarChart>
+              </ResponsiveContainer>
+            </Paper>
           </Grid>
 
           <Grid item>

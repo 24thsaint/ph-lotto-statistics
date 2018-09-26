@@ -15,7 +15,7 @@ class AddEntries extends React.Component {
     return (
       <Grid item container direction="row" spacing={16} justify="center">
         <Grid item>
-          <Paper elevation={1} className="addEntriesForm">
+          <Paper elevation={1} className="container">
             <Grid item>
               <TextField 
                 label="Category"

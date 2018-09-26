@@ -12,6 +12,9 @@ class LottoStore {
     drawDate: ''
   }
   @observable batchResult = undefined
+  @observable selectedResult = {
+    combination: []
+  }
 
   constructor(rootStore, client) {
     this.rootStore = rootStore;
@@ -53,6 +56,16 @@ class LottoStore {
     const result = new Result(this.values.combination, this.values.drawDate, this.values.jackpot, this.values.category);
     await this.lottoService.create(result);
     alert('Saved!'); // eslint-disable-line
+  }
+
+  @action.bound onRowClick(result) {
+    this.selectedResult = result;
+    let scrollY = window.scrollY;
+    for (let scroll = scrollY; scroll >= 0; scroll--) {
+      setTimeout(() => {
+        window.scrollTo(0, scroll); // eslint-disable-line
+      }, 500 - (scroll));
+    }
   }
 }
 

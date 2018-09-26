@@ -9,6 +9,10 @@ class Result {
   getCombination() {
     return this.combination.join('-');
   }
+
+  getMean() {
+    return this.combination.reduce((prev, curr) => (prev += parseInt(curr)), 0);
+  }
 }
 
 export default Result;

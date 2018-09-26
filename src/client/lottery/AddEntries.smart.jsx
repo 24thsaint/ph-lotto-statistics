@@ -14,7 +14,7 @@ class AddEntriesContainer extends React.Component {
 
   render() {
     return (
-      <Grid container direction="column" justify="center" id="addEntriesContainer">
+      <Grid container direction="column" justify="center" className="container">
         <Grid container item>
           <AddEntries />
         </Grid>

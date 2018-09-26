@@ -1,7 +1,16 @@
-#addEntriesContainer {
+.container {
     padding: 25px;
 }
 
-.addEntriesForm {
-    padding: 25px;
+.table-selected {
+    background-color: lightblue;
+    cursor: pointer;
+}
+
+.table-normal {
+    cursor: pointer;
+}
+
+.table-normal:hover {
+    background-color: lightblue;
 }

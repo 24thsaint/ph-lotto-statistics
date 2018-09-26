@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { inject, observer } from 'mobx-react';
-import { Table, TableHead, TableRow, TableCell, TableBody, Grid } from '@material-ui/core';
+import { Table, TableHead, TableRow, TableCell, TableBody, Grid, Paper } from '@material-ui/core';
 import LottoStore from '../stores/LottoStore';
 import './AddEntries.css';
 
@@ -14,28 +14,36 @@ class EntriesTable extends React.Component {
 
   render() {
     return (
-      <Grid container alignItems="center">
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>Combinations</TableCell>
-              <TableCell>Jackpot</TableCell>
-              <TableCell>Draw Date</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {
-              this.lottoStore.batchResult.results.map(result => (
-                <TableRow key={result.getCombination()}>
-                  <TableCell>{result.getCombination()}</TableCell>
-                  <TableCell>{result.jackpot}</TableCell>
-                  <TableCell>{result.drawDate}</TableCell>
-                </TableRow>
-              ))
-            }
-          </TableBody>
-        </Table>
-      </Grid>
+      <Paper elevation={1}>
+        <Grid container alignItems="center">
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>Combinations</TableCell>
+                <TableCell>Jackpot</TableCell>
+                <TableCell>Draw Date</TableCell>
+                <TableCell>Mean</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {
+                this.lottoStore.batchResult.results.map(result => (
+                  <TableRow 
+                    key={result.getCombination()} 
+                    onClick={() => {this.lottoStore.onRowClick(result);}}
+                    className={this.lottoStore.selectedResult.combination.join('-') === result.getCombination() ? 'table-selected' : 'table-normal'}
+                  >
+                    <TableCell>{result.getCombination()}</TableCell>
+                    <TableCell>₱{result.jackpot}</TableCell>
+                    <TableCell>{result.drawDate}</TableCell>
+                    <TableCell>{result.getMean()}</TableCell>
+                  </TableRow>
+                ))
+              }
+            </TableBody>
+          </Table>
+        </Grid>
+      </Paper>
     );
   }
 }
