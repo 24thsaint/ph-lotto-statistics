@@ -2,7 +2,7 @@ import React from 'react';
 import { inject, observer } from 'mobx-react';
 import { Grid, Paper, Typography } from '@material-ui/core';
 import EntriesTable from '../../../app/client/lottery/EntriesTable.dumb';
-import { BarChart, YAxis, XAxis, Tooltip, Bar, ResponsiveContainer, Cell } from 'recharts';
+import { BarChart, YAxis, XAxis, Tooltip, Bar, ResponsiveContainer, Cell, Label } from 'recharts';
 import './AddEntries.css';
 
 @inject('store') @observer
@@ -34,9 +34,12 @@ class ShowEntries extends React.Component {
               <ResponsiveContainer width="100%" height={400}>
                 <BarChart 
                   data={this.lottoStore.batchResult.getNormalizedStatistics()}
+                  margin={{bottom: 20, left: 10}}
                 >
-                  <XAxis dataKey="name" interval={0} />
-                  <YAxis />
+                  <XAxis dataKey="name" interval={0}>
+                    <Label value="Lotto Numbers" position="bottom" />
+                  </XAxis>
+                  <YAxis label={{ value: 'Frequency', angle: -90, position: 'insideLeft' }} />
                   <Tooltip />
                   <Bar dataKey="value">
                     {
