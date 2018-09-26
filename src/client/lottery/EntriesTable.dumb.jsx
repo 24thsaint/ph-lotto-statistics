@@ -14,7 +14,7 @@ class EntriesTable extends React.Component {
 
   render() {
     return (
-      <Paper elevation={1}>
+      <Paper elevation={1} className="table-wrapper">
         <Grid container alignItems="center">
           <Table>
             <TableHead>

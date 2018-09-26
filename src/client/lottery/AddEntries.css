@@ -14,3 +14,7 @@
 .table-normal:hover {
     background-color: lightblue;
 }
+
+.table-wrapper {
+    overflow-x: auto;
+}
