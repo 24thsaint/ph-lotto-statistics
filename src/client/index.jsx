@@ -1,5 +1,4 @@
 /* global document */
-import 'typeface-roboto';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import React from 'react';
