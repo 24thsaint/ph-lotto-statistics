@@ -33,6 +33,34 @@ class Lotto {
     });
     return normalizedStatistics;
   }
+
+  getBellCurveStatistics() {
+    let bellCurveStatistics = [];
+    Object.keys(this.statistics).forEach(key => {
+      const data = {name: key, value: this.statistics[key]};
+      bellCurveStatistics.push(data);
+    });
+
+    let bellCurveStatistics1 = bellCurveStatistics.slice(0, (bellCurveStatistics.length / 2));
+    let bellCurveStatistics2 = bellCurveStatistics.slice((bellCurveStatistics.length / 2), bellCurveStatistics.length);
+
+    bellCurveStatistics1 = bellCurveStatistics1.sort((a, b) => {
+      if (a.value === b.value) {
+        return 0;
+      }
+      return a.value < b.value ? -1 : 1;
+    });
+
+    bellCurveStatistics2 = bellCurveStatistics2.sort((a, b) => {
+      if (a.value === b.value) {
+        return 0;
+      }
+      return a.value > b.value ? -1 : 1;
+    });
+
+    console.log(bellCurveStatistics1.concat(bellCurveStatistics2));
+    return bellCurveStatistics1.concat(bellCurveStatistics2);
+  }
 }
 
 export default Lotto;
