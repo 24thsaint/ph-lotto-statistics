@@ -24,12 +24,14 @@
   "scripts": {
     "test": "npm run eslint && npm run mocha",
     "eslint": "eslint src/. test/. --config .eslintrc.json",
-    "start": "node src/",
+    "start": "node app/",
+    "start:dev": "nodemon app",
     "mocha": "mocha test/ --recursive --exit",
     "build:webpack": "webpack",
     "build:app": "babel src/ --out-dir app/ --copy-files",
     "build:full": "npm run build:app && npm run build:webpack",
-    "build:full:dev": "babel src/ --out-dir app/ --copy-files --watch & webpack --watch"
+    "build:full:dev": "babel src/ --out-dir app/ --copy-files --watch & webpack --watch",
+    "postinstall": "npm run build:full"
   },
   "dependencies": {
     "@babel/core": "^7.1.0",

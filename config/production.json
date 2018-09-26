@@ -1,4 +1,5 @@
 {
   "host": "mfrn-boilerplate-app.feathersjs.com",
-  "port": "PORT"
+  "port": "PORT",
+  "mongodb": "mongodb://rave:rave123@ds115193.mlab.com:15193/rave"
 }
