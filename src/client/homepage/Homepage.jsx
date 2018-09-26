@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Button } from '@material-ui/core';
+import { Grid, Button, Typography } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import { inject, observer } from 'mobx-react';
 
@@ -25,6 +25,9 @@ class Homepage extends React.Component {
               </Link>
             </Grid>
           </Grid>
+        </Grid>
+        <Grid item>
+          <Typography variant="caption">Nothing else is here. (•-•)</Typography>
         </Grid>
       </Grid>
     );
