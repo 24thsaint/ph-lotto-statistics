@@ -24,7 +24,8 @@ class LottoStore {
   }
 
   @action async initialize() {
-    const results = await this.lottoService.find();
+    let results = await this.lottoService.find();
+    results = results.reverse();
     const lotto = new Lotto();
     results.forEach(result => {
       const _result = new Result(result.combination.join('-'), result.drawDate, result.jackpot, result.category);
@@ -44,6 +45,7 @@ class LottoStore {
     }
     const _batchResult = new BatchResultHandler(this.values.batchResult, this.values.category);
     this.batchResult = _batchResult.process();
+    this.batchResult.results = this.batchResult.results.reverse();
   }
 
   @action.bound async saveBatchResult() {
@@ -60,7 +62,7 @@ class LottoStore {
 
   @action.bound onRowClick(result) {
     this.selectedResult = result;
-    let scrollY = window.scrollY;
+    let scrollY = window.scrollY; // eslint-disable-line
     for (let scroll = scrollY; scroll >= 0; scroll--) {
       setTimeout(() => {
         window.scrollTo(0, scroll); // eslint-disable-line

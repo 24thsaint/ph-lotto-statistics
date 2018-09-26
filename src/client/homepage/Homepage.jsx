@@ -20,14 +20,8 @@ class Homepage extends React.Component {
         <Grid item>
           <Grid container item direction="row" justify="center" spacing={16}>
             <Grid item>
-              <Link to="/entries/add">
-                <Button variant="outlined" color="primary">Add Entries</Button>
-              </Link>
-            </Grid>
-
-            <Grid item>
               <Link to="/entries/show">
-                <Button variant="outlined" color="primary">Show Entries</Button>
+                <Button variant="outlined" color="primary">Show Lotto Stuff</Button>
               </Link>
             </Grid>
           </Grid>

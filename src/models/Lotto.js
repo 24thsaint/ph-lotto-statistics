@@ -17,8 +17,6 @@ class Lotto {
 
       this.statistics[combinationFix] += 1;
     });
-
-    this.results = this.results.reverse();
   }
 
   getNormalizedStatistics() {

@@ -25,7 +25,7 @@ class BatchResultHandler {
       const result = new Result(combination, date, jackpot, this.category);
       lotto.addResult(result);
     }
-
+    
     return lotto;
   }
 }
