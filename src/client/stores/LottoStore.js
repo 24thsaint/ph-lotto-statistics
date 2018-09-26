@@ -25,7 +25,18 @@ class LottoStore {
 
   @action async initialize() {
     let results = await this.lottoService.find();
-    results = results.reverse();
+    
+    results = results.sort((a, b) => {
+      const aDate = new Date(a.drawDate);
+      const bDate = new Date(b.drawDate);
+
+      if (aDate === bDate) {
+        return 0;
+      }
+
+      return aDate < bDate ? 1 : -1;
+    });
+
     const lotto = new Lotto();
     results.forEach(result => {
       const _result = new Result(result.combination.join('-'), result.drawDate, result.jackpot, result.category);
