@@ -19,10 +19,10 @@ class EntriesTable extends React.Component {
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell>Combinations</TableCell>
+                <TableCell>Combination</TableCell>
                 <TableCell>Jackpot</TableCell>
                 <TableCell>Draw Date</TableCell>
-                <TableCell>Mean</TableCell>
+                <TableCell>Combination Sum</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
