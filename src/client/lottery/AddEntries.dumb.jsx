@@ -56,7 +56,7 @@ class AddEntries extends React.Component {
         </Grid>
 
         <Grid item>
-          <Paper elevation={1} className="addEntriesForm">
+          <Paper elevation={1} className="container">
             <Grid item>
               <TextField 
                 label="Category"

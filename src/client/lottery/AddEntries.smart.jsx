@@ -20,7 +20,7 @@ class AddEntriesContainer extends React.Component {
         </Grid>
         <Grid container item>
           {
-            this.lottoStore.batchResult ? <EntriesTable /> : undefined
+            this.lottoStore.values.batchResult.length > 0 ? <EntriesTable /> : undefined
           }
         </Grid>
       </Grid>

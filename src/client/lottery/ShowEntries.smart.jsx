@@ -1,6 +1,6 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
-import { Grid, Paper, Typography } from '@material-ui/core';
+import { Grid, Paper, Typography, InputLabel, FormControl, Select } from '@material-ui/core';
 import EntriesTable from '../../../app/client/lottery/EntriesTable.dumb';
 import { BarChart, YAxis, XAxis, Tooltip, Bar, ResponsiveContainer, Cell, Label } from 'recharts';
 import './AddEntries.css';
@@ -64,7 +64,31 @@ class ShowEntries extends React.Component {
     }
 
     return (
-      component
+      <Grid item container direction="column">
+        <Grid item>
+          <FormControl>
+            <InputLabel htmlFor="category">Category</InputLabel>
+            <Select
+              native
+              inputProps={{
+                id: 'category',
+                name: 'category'
+              }}
+              onChange={this.lottoStore.changeCategory}
+            >
+              <option value="6/58">6/58</option>
+              <option value="6/55">6/55</option>
+              <option value="6/49">6/49</option>
+              <option value="6/48">6/48</option>
+              <option value="6/45">6/45</option>
+              <option value="6/42">6/42</option>
+            </Select>
+          </FormControl>
+        </Grid>
+        <Grid item>
+          {component}
+        </Grid>
+      </Grid>
     );
   }
 }

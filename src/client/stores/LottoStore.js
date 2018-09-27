@@ -20,11 +20,11 @@ class LottoStore {
     this.rootStore = rootStore;
     this.client = client;
     this.lottoService = client.service('api/lotto');
-    this.initialize();
+    this.initialize({query: {category: '6/58'}});
   }
 
-  @action async initialize() {
-    let results = await this.lottoService.find();
+  @action async initialize(query = {}) {
+    let results = await this.lottoService.find(query);
     
     results = results.sort((a, b) => {
       const aDate = new Date(a.drawDate);
@@ -43,6 +43,11 @@ class LottoStore {
       lotto.addResult(_result);
     });
     this.batchResult = lotto;
+  }
+
+  @action.bound changeCategory(event) {
+    const newCategory = event.target.value;
+    this.initialize({query: {category: newCategory}});
   }
 
   @action.bound setValue(event) {
